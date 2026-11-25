@@ -1,22 +1,25 @@
 #!/usr/bin/env python3
-"""Write the one word to erase from the dictionary to entry.txt.
+"""Satu kata yang ingin kuhapus dari kamus.
 
-Writes exactly one word, ``please``, with nothing added around it:
-no trailing newline, no spaces, no punctuation.
+Program kecil ini cuma punya satu tugas: menyimpan satu kata pilihan
+ke sebuah berkas bernama entry.txt. Kata itu adalah jawaban atas
+pertanyaan bounty — kata mana yang paling layak dicoret dari kamus
+bahasa Inggris. Tidak ada masukan dari pengguna, tidak ada pilihan
+acak, dan tidak ada keluaran lain di layar; semuanya sesederhana itu.
 """
 
 import os
 
-
 WORD = "please"
 
 
-def main() -> None:
-    out_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
-    os.makedirs(out_dir, exist_ok=True)
-    path = os.path.join(out_dir, "entry.txt")
-    with open(path, "w", encoding="utf-8") as f:
-        f.write(WORD)
+def main():
+    """Tulis kata pilihan ke entry.txt tanpa baris baru di ujungnya."""
+    target_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+    os.makedirs(target_dir, exist_ok=True)
+    entry_path = os.path.join(target_dir, "entry.txt")
+    with open(entry_path, "w", encoding="utf-8") as handle:
+        handle.write(WORD)
 
 
 if __name__ == "__main__":
